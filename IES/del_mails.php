@@ -18,11 +18,11 @@
 			echo $id;
 			$ids[]=$id;
 		}
-		$link=mysql_connect("localhost","","");
+		$link=mysqli_connect("localhost","","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($db,$link))
+		if(!mysqli_select_db($db,$link))
 			echo("could not select the database");
 		 //checking where did the request come from, if it includes inbox: type=rcvd are deleted, if it includes sent:type=snt are deleted
 		if(strstr($_SERVER['HTTP_REFERER'],"inbox")){     
@@ -35,13 +35,13 @@
 			$type="svd";
 		} 
 		foreach($ids as $id){
-			$success=mysql_query("update mailstats set type='del' where msg_id='$id' and type='$type';");
+			$success=mysqli_query("update mailstats set type='del' where msg_id='$id' and type='$type';");
 			if(!$success){
 				echo "operation failed, please check the mail you selected";
 				break;
 			}
 		}
-		mysql_close($link);
+		mysqli_close($link);
 		header("location:".$_SERVER['HTTP_REFERER']);
 	}
 ?>

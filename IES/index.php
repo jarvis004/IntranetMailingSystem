@@ -56,19 +56,19 @@
 	if(isset($_POST['submit'])){
 		$user=$_POST['uid'];
 		$pass=md5($_POST['pwd']);
-		$link=mysql_connect("localhost","root","");
+		$link=mysqli_connect("localhost","root","");
 			if(!$link)
 				echo("could not connect to database");
 			$db="ies";
-			if(!mysql_select_db($db,$link))
+			if(!mysqli_select_db($link,"ies"))
 				echo("could not select the database");
-		$resultset=mysql_query("select username from users where username='$user' and password='$pass';");
-		if(mysql_num_rows($resultset)==1){
+		$resultset=mysqli_query($link,"select username from users where username='$user' and password='$pass';");
+		if(mysqli_num_rows($resultset)==1){
 			session_start();
 			$sid=session_id();
 			setcookie("ies",$sid,time()+24*60*60);
 			setcookie("usr", $user,time()+24*60*60);
-			mysql_close($link);
+			mysqli_close($link);
 			header("location:inbox.php");
 		}
 		else{

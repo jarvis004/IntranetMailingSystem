@@ -68,14 +68,14 @@
 	$content="";
 	if(isset($_GET['id'])){
 		$id=$_GET['id'];
-		$link=mysql_connect("localhost","root","");
+		$link=mysqlii_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($db,$link))
+		if(!mysqli_select_db($db,$link))
 			echo("could not select the database");
-		$resultset=mysql_query("select for_users, subject, msg from mails where msg_id='$id';");
-		$row=mysql_fetch_array($resultset);
+		$resultset=mysqli_query("select for_users, subject, msg from mails where msg_id='$id';");
+		$row=mysqli_fetch_array($resultset);
 		$to=$row['for_users'];
 		$subject=$row['subject'];
 		$content=$row['msg'];
@@ -92,11 +92,11 @@
 
 
 	if(isset($_POST['save'])){
-		$link=mysql_connect("localhost","root","");
+		$link=mysqlii_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($db,$link))
+		if(!mysqli_select_db($db,$link))
 			echo("could not select the database");
 		$ts=mktime();
 		$msgid="msg".$ts.mt_rand(0,9999);
@@ -112,19 +112,19 @@
 		}
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','$to');");
+		$success1=mysqli_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','$to');");
 		//inserting data for the user who composed the mail
-		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'svd');");
+		$success2=mysqli_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'svd');");
 		if($success1&&$success2)
 			echo "draft saved successfully";
-		mysql_close($link);
+		mysqli_close($link);
 	}
 	else if(isset($_POST['send'])){
-		$link=mysql_connect("localhost","root","");
+		$link=mysqli_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($db,$link))
+		if(!mysqli_select_db($link,"ies"))
 			echo("could not select the database");
 		$ts=mktime();
 		$msgid="msg".$ts.mt_rand(0,9999);
@@ -141,12 +141,12 @@
 		}
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");
+		$success1=mysqli_query($link,"insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");
 		//inserting data for the user who composed the mail
-		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'snt');");
+		$success2=mysqli_query($link,"insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'snt');");
 		//inserting data for every user that is specified by user in 'to' field
 		foreach($users as $user){
-			$success3=mysql_query("insert into mailstats(username, msg_id, type) values('$user', '$msgid', 'rcvd');");
+			$success3=mysqli_query($link,"insert into mailstats(username, msg_id, type) values('$user', '$msgid', 'rcvd');");
 			if(!$success3){
 				echo "operation failed, please check the mail you composed";
 				break;
@@ -154,7 +154,7 @@
 		}
 		if($success1&&$success2)
 			echo "mail send successfully";
-		mysql_close($link);
+		mysqli_close($link);
 	}
 ?>
 </div>

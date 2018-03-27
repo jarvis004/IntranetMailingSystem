@@ -1,30 +1,30 @@
 <?php
 	if (isset($_POST['msgid'])&&isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
-		$link=mysql_connect("localhost","root","");
+		$link=mysqli_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($db,$link))
+		if(!mysqli_select_db($link,"ies"))
 			echo("could not select the database");
 		$id=$_POST['msgid'];
-		$result=mysql_query("select msg from mails where msg_id='$id'");
-		$row=mysql_fetch_array($result);
+		$result=mysqli_query($link,"select msg from mails where msg_id='$id'");
+		$row=mysqli_fetch_array($result);
 		$data=$row['msg'];
 		echo $data;
 	}
 	if(strstr($_SERVER['HTTP_REFERER'],"register")){
-			$link=mysql_connect("localhost","root","");
+			$link=mysqli_connect("localhost","root","","");
 			if(!$link)
 				echo("could not connect to database");
 			$db="ies";
-			if(!mysql_select_db($db,$link))
+			if(!mysqli_select_db($link,"ies"))
 				echo("could not select the database");
 			$checkfor=$_POST['checkfor'];
-			$result=mysql_query("select username from users where username='$checkfor';");
+			$result=mysqli_query($link,"select username from users where username='$checkfor';");
 			if(!strlen($checkfor))
 				$data="<span style=\"color:red\">username can not be left blank</span>";
-			else if(mysql_num_rows($result)){
+			else if(mysqli_num_rows($result)){
 				$data="<span style=\"color:red\">this username is <b>not available</b>, please try another</span>";
 			}
 			else{
