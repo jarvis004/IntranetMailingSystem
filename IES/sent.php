@@ -70,7 +70,7 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-			echo "<div id=\"button_holder\"><input type=\"submit\" value=\"delete mails\"/></div>";
+			echo "<div id=\"button_holder\"><input name=\"delete\" type=\"submit\" value=\"delete mails\"/></div>";
 			echo "</form>";
 		}
 		else
