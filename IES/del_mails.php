@@ -7,16 +7,17 @@
 
 <body>
 <?php
-	$_POST['delete'];
+	/*$_POST['delete'];
 	foreach($_POST['del_msgs'] as $id){
 		$ids[]=$id;
-	}
-	if (isset($_COOKIE['ies'])){
+	}*/
+	if (isset($_POST['delete'])&&isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
-		$_POST['delete'];
+		if(isset($_POST['delete']){
 		foreach($_POST['del_msgs'] as $id){
 			echo $id;
 			$ids[]=$id;
+		}
 		}
 		$link=mysqli_connect("localhost","root","");
 		if(!$link)
