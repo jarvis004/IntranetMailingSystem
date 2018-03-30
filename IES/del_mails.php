@@ -13,7 +13,7 @@
 	}*/
 	if (isset($_POST['delete'])&&isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
-		if(isset($_POST['delete']){
+		if(isset($_POST['delete'])){
 		foreach($_POST['del_msgs'] as $id){
 			echo $id;
 			$ids[]=$id;
