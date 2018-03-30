@@ -7,22 +7,25 @@
 
 <body>
 <?php
-	$_POST['delete'];
-	foreach($_POST['del_msgs'] as $id){
-		$ids[]=$id;
-	}
-	if (isset($_COOKIE['ies'])){
-		$user=$_COOKIE['usr'];
-		$_POST['delete'];
+	/*if(isset($_POST['delete'])){
 		foreach($_POST['del_msgs'] as $id){
 			echo $id;
 			$ids[]=$id;
 		}
-		$link=mysqli_connect("localhost","root","");
+	}*/
+	if (isset($_POST['delete'])&&isset($_COOKIE['ies'])){
+		$user=$_COOKIE['usr'];
+		if(isset($_POST['delete'])){
+			foreach($_POST['del_msgs'] as $id){
+				echo $id;
+				$ids[]=$id;
+			}
+		}
+		$link=mysql_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysqli_select_db($db,$link))
+		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
 		 //checking where did the request come from, if it includes inbox: type=rcvd are deleted, if it includes sent:type=snt are deleted
 		if(strstr($_SERVER['HTTP_REFERER'],"inbox")){     
@@ -35,13 +38,13 @@
 			$type="svd";
 		} 
 		foreach($ids as $id){
-			$success=mysqli_query("update mailstats set type='del' where msg_id='$id' and type='$type';");
+			$success=mysql_query("update mailstats set type='del' where msg_id='$id' and type='$type';");
 			if(!$success){
 				echo "operation failed, please check the mail you selected";
 				break;
 			}
 		}
-		mysqli_close($link);
+		mysql_close($link);
 		header("location:".$_SERVER['HTTP_REFERER']);
 	}
 ?>

@@ -1,5 +1,7 @@
 /*create database ies;  --use "source filename" syntax to run this file
 use ies;*/
+create database ies;
+use ies;
 create table mails(
 	serial bigint auto_increment unique not null,
 	msg_id varchar(25) not null,

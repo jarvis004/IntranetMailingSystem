@@ -41,11 +41,11 @@
 		$page=isset($_GET['page'])?$_GET['page']:0;
 		if($page<0)
 			$page=0;
-		$link=mysqli_connect("localhost","root","");
+		$link=mysql_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysqli_select_db($link,"ies"))
+		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
 		$prev=$page-1;
 		$next=$page+1;
@@ -55,27 +55,41 @@
 		$leave=$page*10;
 	
 		$query1="select msg_id from  mailstats where username='$user' and type='snt' order by serial DESC limit ".$leave.",10";
-		$result1=mysqli_query($link,$query1);
+		$result1=mysql_query($query1);
 		$i=0;
-		if(mysqli_num_rows($result1)){
+		if(mysql_num_rows($result1)){
 			echo "<form id=\"del_form\" action=\"del_mails.php\" method=\"post\">";
-			while($rowset1=mysqli_fetch_array($result1)){
+			while($rowset1=mysql_fetch_array($result1)){
 				$id=$rowset1['msg_id'];
-				$result2=mysqli_query($link,"select subject from mails where msg_id='$id';");
-				$rwst2=mysqli_fetch_array($result2);
+				//echo $id;
+				$result2=mysql_query("select subject from mails where msg_id='$id';");
+				$rwst2=mysql_fetch_array($result2);
+			//	echo $result2;
 				echo "<table border=\"0\" id=\"mail_list\">";
 				echo "<tr>";
 				echo "<td class=\"index\">".($leave + ++$i)."</td>";
 				echo "<td class=\"subjects\" id=".$id."><input type=\"checkbox\" name=\"del_msgs[]\" value=".$id."><a class=\"msglink\" href=\"showmail.php?id=".$id."\">".$rwst2['subject']."</a></td>";
 				echo "</tr>";
+
 			}
 			echo "</table>";
 			echo "<div id=\"button_holder\"><input name=\"delete\" type=\"submit\" value=\"delete mails\"/></div>";
+			/*foreach($_POST as $del_msgs){
+					if(is_array($del_msgs)){
+						foreach($del_msgs as $i){
+							echo $i;
+						}
+					}
+					else{
+						echo $del_msgs;
+					}
+			}*/
 			echo "</form>";
+			
 		}
 		else
 			echo "no more mails to show!";
-			mysqli_close($link);
+			mysql_close($link);
 	}
 	else
 		echo "sorry, Your session has expired. Please log in again to see the content of this page.";
@@ -97,11 +111,11 @@
 		$page=isset($_GET['page'])?$_GET['page']:0;
 		if($page<0)
 			$page=0;
-		$link=mysqli_connect("localhost:3308","root","pass");
+		$link=mysql_connect("localhost:3308","root","pass");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysqli_select_db($db,$link))
+		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
 		$prev=$page-1;
 		$next=$page+1;
@@ -110,14 +124,14 @@
 		$leave=$page*10;
 		print "page=".($page+1);
 		$query1="select msg_id from mailstats where username='$user' and type='snt' order by serial DESC limit ".$leave.",10";
-		$result1=mysqli_query($query1);
+		$result1=mysql_query($query1);
 		$i=0;
-		if(mysqli_num_rows($result1)){
+		if(mysql_num_rows($result1)){
 			echo "<form id=\"del_form\" action=\"del_mails.php\" method=\"post\">";
-			while($rowset1=mysqli_fetch_array($result1)){
+			while($rowset1=mysql_fetch_array($result1)){
 				$id=$rowset1['msg_id'];
-				$result2=mysqli_query("select subject from mails where msg_id='$id';");
-				$rwst2=mysqli_fetch_array($result2);
+				$result2=mysql_query("select subject from mails where msg_id='$id';");
+				$rwst2=mysql_fetch_array($result2);
 				echo "<table border=\"1\">";
 				echo "<tr>";
 				echo "<td>".($leave + ++$i)."</td>";
@@ -130,7 +144,7 @@
 		}
 		else
 			echo "no more mails to show!";
-			mysqli_close($link);
+			mysql_close($link);
 	}
 	else
 		echo "sorry, Your session has expired. Please log in again to see the content of this page.";

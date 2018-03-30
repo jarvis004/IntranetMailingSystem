@@ -47,22 +47,22 @@
 		</div>
 	</div>
 </div>
-<div id="footer" ><span class="fn1">&copy; Intranet Email System 2018</span><span class="fn2">powered by:</span></div>
+<div id="footer" ><span class="fn1">&copy; Intranet Email System 2012</span><span class="fn2">powered by:skyroute.org</span></div>
 </div>
 <?php
 	if(count($_POST)>0){
-		$link=mysqli_connect("localhost","root","","ies");
+		$link=mysql_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysqli_select_db($link,"ies"))
+		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
 		$user=$_POST['uid'];
 		$pass=md5($_POST['pwd']);
 		echo $user."<br/>".$pass;
-		$success=mysqli_query($link,"insert into users(username, password) values('$user','$pass');");
+		$success=mysql_query("insert into users(username, password) values('$user','$pass');");
 		if($success)
-			echo "registration successful";
+			echo "<script>alert(\"Registration Successful\");</script>";
 	}
 ?>
 </body>

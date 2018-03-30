@@ -1,11 +1,11 @@
 <?php
-	$_POST['delete'];
+	$_POST['del_msgs'];
 	foreach($_POST['del_msgs'] as $id){
 		$ids[]=$id;
 	}
 	if (isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
-		$_POST['delete'];
+		$_POST['del_msgs'];
 		foreach($_POST['del_msgs'] as $id){
 			echo $id;
 			$ids[]=$id;
@@ -14,7 +14,7 @@
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysql_select_db($link,"ies"))
+		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
 		 //checking where did the request come from, if it includes inbox: type=rcvd are deleted, if it includes sent:type=snt are deleted
 		/*if(strstr($_SERVER['HTTP_REFERER'],"inbox")){     
@@ -27,7 +27,7 @@
 			$type="svd";
 		}*/
 		foreach($ids as $id){
-			$success1=mysql_query($link,"delete from mailstats where msg_id='$id' and type='del'");
+			$success1=mysql_query("delete from mailstats where msg_id='$id' and type='del'");
 			if(!$success1){
 				echo "operation failed, please check the mail you selected";
 				break;
