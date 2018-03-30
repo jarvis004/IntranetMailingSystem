@@ -68,13 +68,13 @@
 	$content="";
 	if(isset($_GET['id'])){
 		$id=$_GET['id'];
-		$link=mysqlii_connect("localhost","root","");
+		$link=mysqli_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
 		$db="ies";
-		if(!mysqli_select_db($db,$link))
+		if(!mysqli_select_db($link,"ies"))
 			echo("could not select the database");
-		$resultset=mysqli_query("select for_users, subject, msg from mails where msg_id='$id';");
+		$resultset=mysqli_query($link,"select for_users, subject, msg from mails where msg_id='$id';");
 		$row=mysqli_fetch_array($resultset);
 		$to=$row['for_users'];
 		$subject=$row['subject'];
