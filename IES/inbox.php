@@ -78,6 +78,9 @@
 	}
 	else
 		echo "sorry, Your session has expired. Please log in again to see the content of this page.";
+	
+	$url=$_SERVER['PHP_SELF'];
+   	header("Refresh: 5, URL=$url");
 ?>
 </div>
 </div>
