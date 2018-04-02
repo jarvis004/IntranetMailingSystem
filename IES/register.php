@@ -9,7 +9,8 @@
 <script type="text/javascript" language="javascript">
 	function validate(){
 		var pass=true;
-		var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
+	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
+		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 		var usr=document.forms[0].uid.value;
 		var pwd=document.forms[0].pwd.value;
 		if(usr=="" || !un.test(usr)){
