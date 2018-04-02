@@ -10,7 +10,10 @@
 	function validate(){
 		var pass=true;
 	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
+		// checks for any email something@something.com
 		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+	/*	checks for something@imail.com
+		var un =/^([a-zA-Z0-9_\-\.]+)@imail.com$/; */
 		var usr=document.forms[0].uid.value;
 		var pwd=document.forms[0].pwd.value;
 		if(usr=="" || !un.test(usr)){
