@@ -20,5 +20,6 @@ create table mailstats(
 	serial bigint auto_increment unique not null,
 	username varchar(25) not null,
 	msg_id varchar(25) not null,
-	type varchar(5) not null
+	type varchar(5) not null,
+	See int(1) not null
 );
