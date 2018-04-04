@@ -69,6 +69,7 @@
 			while($rowset1=mysql_fetch_array($result1)){
 				$id=$rowset1['msg_id'];
 				//	echo $up1;
+				$up1 = $rowset1['See'];
 				if($up1 == 0){
 					mysql_query("update mailstats Set See=$up1+1 where See=$up1 and type='rcvd';");
 					echo "<script type='text/javascript'>alert('New mail');</script>";
