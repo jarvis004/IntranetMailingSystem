@@ -51,7 +51,7 @@
 	</div>
   </div>
   </div>
-  <div id="footer" ><span class="fn1">&copy; Intranet Email System 2012</span><span class="fn2">powered by:skyroute.org</span></div>
+<div id="footer"><span class="fn1">&copy; Intranet Email System 2018</span><span class="fn2">powered by:IIIT Allahabad</span>
 </div>
 <?php
 	if(isset($_POST['submit'])){
