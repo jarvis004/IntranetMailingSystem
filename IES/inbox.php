@@ -6,6 +6,12 @@
 <script src="scripts/jquery.js"></script>
 <script src="scripts/js01.js"></script>
 <style>
+	.name {
+		width: 15%;
+		color: black;
+		background-color:white;
+		font-family: verdana;
+	}
 	.msglink{
 		text-decoration:none;
 		color:#333399;
@@ -37,6 +43,8 @@
 <?php
 	if (isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
+		$us="Welcome";
+		echo "<span class=\"account_link\">".$us."  ".$user."</span>";
 		$page=isset($_GET['page'])?$_GET['page']:0;
 		if($page<0)
 			$page=0;
@@ -53,18 +61,26 @@
 		echo "<a href=inbox.php?page=".$next." style=\"float:right;\">next</a></div>";
 		$leave=$page*10;
 	
-		$query1="select msg_id from  mailstats where username='$user' and type='rcvd' order by serial DESC limit ".$leave.",10";
+		$query1="select msg_id,See from  mailstats where username='$user' and type='rcvd' order by serial DESC limit ".$leave.",10";
 		$result1=mysql_query($query1);
 		$i=0;
 		if(mysql_num_rows($result1)){
 			echo "<form id=\"del_form\" action=\"del_mails.php\" method=\"post\">";
 			while($rowset1=mysql_fetch_array($result1)){
 				$id=$rowset1['msg_id'];
+				//	echo $up1;
+				if($up1 == 0){
+					mysql_query("update mailstats Set See=$up1+1 where See=$up1 and type='rcvd';");
+					echo "<script type='text/javascript'>alert('New mail');</script>";
+				}
 				$result2=mysql_query("select subject from mails where msg_id='$id';");
 				$rwst2=mysql_fetch_array($result2);
+				$ans=mysql_fetch_array(mysql_query("select * from mailstats where msg_id='$id' and type ='snt';"));
+				//echo $ans['username'];
 				echo "<table border=\"0\" id=\"mail_list\">";
 				echo "<tr>";
 				echo "<td class=\"index\">".($leave + ++$i)."</td>";
+				echo "<td class=\"name\" >".$ans['username']."</td>";
 				echo "<td class=\"subjects\" id=".$id."><input type=\"checkbox\" name=\"del_msgs[]\" value=".$id."><a class=\"msglink\" href=\"showmail.php?id=".$id."\">".$rwst2['subject']."</a></td>";
 				echo "</tr>";
 			}
