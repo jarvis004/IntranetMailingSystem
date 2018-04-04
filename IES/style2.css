@@ -77,6 +77,14 @@ button:hover,input[type="button"]:hover, input[type="submit"]:hover, input[type=
 	left:90%;
 	top:10px;
 }
+.account_link{
+	font-weight:bold;
+	position:absolute;
+	font-size: 30px;
+	color: #1f32df;
+	left:45%;
+	top:15px;
+	}
 /*.tx {
 	border-style: inset;
 	display: block;
