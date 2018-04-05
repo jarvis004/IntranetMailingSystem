@@ -3,6 +3,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>New User Sign Up</title>
+<style type="text/css">
+*{
+padding:auto;
+margin:auto;
+
+}
+.header img {
+  float: left;
+  width: 30px;
+  height: 30px;
+  background: #555;
+}
+
+.header h3 {
+  position: relative;
+  top: 7px;
+  left: 10px;
+  font-family:Arial;
+}
+.mar {
+	margin-left:14%;
+	margin-top:3%;
+	margin-bottom:3%;
+}
+</style>
 <link href="style.css" rel="stylesheet" type="text/css"/>
 <script src="scripts/jquery.js"></script>
 <script src="scripts/js01.js"></script>
@@ -33,26 +58,34 @@
 </script>
 </head>
 
-<body>
-<div id="container">
-  <div id="header"><span class="title">IES</span></div>
-  <div id="main">
-    <div id="left_col"><img src="images/mailbox.jpg" alt="IES" style="width:90%; height:90%; margin:5% auto auto 5%;"/>
-	</div>
-   	<div id="right_col">
-   		<img src="images/vr.png" style="width:1px; float:left;" height="550px"/>
+<body background = "images/effil.jpg">
+<div id="container" font-family = "Arial" style="background: #FFFFF2;
+		height:45%;
+		width:21%;
+        color: black;
+        padding: 2em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)">
+        <div class="header">
+  		<img src="images/microsoft.png" alt="logo" />
+  		<h3> <font color="#808080">Microsoft</font></h3>
+		</div>  
+   	
 		<div id="form_holder">
 		<form autocomplete="off" name="reg_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-			<label>Username:</label><br /><input class="tx" type="text" name="uid" size=20 maxlength=40/><br /><span class="avail"></span>
-			<label style="">Password:</label><br /><input class="tx" type="password" name="pwd" size=20 maxlength=40/>
-			<input type="button" name="register" value="sign up" onclick="validate()" class="sub-button"/>
+			<label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "@gmail.com" name="uid" size=25  maxlength=40/><br /><span class="avail"></span>
+			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input  style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" placeholder= "Create Password " type="password" name="pwd" size=25 text-align = "center"  maxlength=40/>
+			<input style =" font-style:bold;" type="button" name="register" value="Sign Up" onclick="validate()" class="sub-button "/>
 			<span style="margin:20px 0 0 15%;">already a user? <a href="index.php">Sign In</a></span>
 		</form>
 		</div>
+
 	</div>
-</div>
-<div id="footer"><span class="fn1">&copy; Intranet Email System 2018</span><span class="fn2">powered by:IIIT Allahabad</span>
-</div>
+<!--<div id="footer"><span class="fn1">&copy; Intranet Email System 2018</span><span class="fn2">powered by:IIIT Allahabad</span>
+</div>-->
 <?php
 	if(count($_POST)>0){
 		$link=mysql_connect("localhost","root","");
