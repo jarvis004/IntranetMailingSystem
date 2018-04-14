@@ -3,13 +3,66 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Untitled Document</title>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/js01.js"></script>
+<style>
+	.msglink{
+		text-decoration:none;
+		color:#333399;
+		font-weight:bold;
+		font-family:verdana;
+		font-size:12px;
+	}
+</style>
+<link href="style2.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+	<div id="header"><span class="title">IES</span><span class="account_links"><a href=logout.php>logout</a></span>
+		<?php 
+		if (isset($_COOKIE['ies'])){
+		$user=$_COOKIE['usr'];
+		$msgid=$_GET['id'];
+		$us="Welcome";
+		echo "<span class=\"account_link\">".$us."  ".$user."</span>";
+		}
+	?>
+</div>
+<div id="main">
+<div id="left_col">
+<ul>
+<li><a href="compose.php">Compose Mail</a></li>
+<li><a href="inbox.php">Inbox</a></li>
+<li><a href="drafts.php">Drafts</a></li>
+<li><a href="sent.php">Sent Mails</a></li>
+<li><a href="trash.php">Mails in Trash</a></li>
+</ul>
+
+</div>
+
+<div id="right_col">
+<img src="images/vr.png" style="width:1px; float:left;" height="550px"/>
+</div>
+<div id="container" font-family = "Arial" style="
+		height:50%;
+		width:50%;
+        color: black;
+        padding: 2em;
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        margin-right: -40%;
+        transform: translate(-50%, -50%)">
+	<span class = "subject" style = "font-weight: bold;text-align: left;margin:10px 0% 0% -40%;"></span>
+	<span class = "msg" style = "font-weight:italic; text-align: left;"></span>
+	
+
 <?php
 	if (isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
 		$msgid=$_GET['id'];
+		$us="Welcome";
+		//echo "<span class=\"account_link\">".$us."  ".$user."</span>";
 		$link=mysql_connect("localhost","root","");
 		if(!$link)
 			echo("could not connect to database");
@@ -18,15 +71,19 @@
 			echo("could not select the database");
 		$result=mysql_query("select subject, msg from mails where msg_id='$msgid'");
 		$row=mysql_fetch_array($result);
-		echo "<table border=1>";
+		//echo "<table border=1>";
 		echo "<tr>";
-		echo "<td><h2>".$row['subject']."</h2></td>";
-		echo "<td>".$row['msg']."</td>";
+		echo "<span class = \"subject\">".$row['subject']."</span><br><br>";
+		//echo "<td><h3>".$row['subject']."</h3></td><br>";
+		echo "<img src='images/vr1.png' alt='photo of me' style = ' width:95%; height:2px;' /><br><br>";
+		echo "<span class = \"msg\">".$row['msg']."</span><br>";
+		//echo "<td>".$row['msg']."</td>";
 		echo "</tr></table>";
 		mysql_close($link);
 	}
 	else
 		echo "sorry, Your session has expired. Please log in again to see the content of this page.";
 ?>
+</div>
 </body>
 </html>
