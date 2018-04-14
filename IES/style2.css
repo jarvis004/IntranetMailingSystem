@@ -72,20 +72,27 @@ button:hover,input[type="button"]:hover, input[type="submit"]:hover, input[type=
 	top: 2%;
 }
 .account_links{
-	font-weight:bold;
+	/*font-weight:bold;*/
 	position:relative;
 	left:90%;
 	top:10px;
 }
 .account_link{
-	font-weight:bold;
+	/*font-weight:bold;*/
 	position:absolute;
-	font-size: 30px;
+	font-size: 20px;
 	color: #1f32df;
 	left:45%;
 	top:15px;
 	}
-/*.tx {
+.subject{
+	position:relative;
+	font-size: 30px;
+	color: #1f32df;
+	left:45%;
+	top:15px;
+}
+/*.tx 
 	border-style: inset;
 	display: block;
 }*/
