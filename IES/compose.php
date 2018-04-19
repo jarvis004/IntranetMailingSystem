@@ -126,7 +126,11 @@
 		}
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','$to');");
+		if($subject){
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");}
+		//inserting data for the user who composed the mail
+		else
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','No Subject','$content','');");
 		//inserting data for the user who composed the mail
 		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'svd');");
 		if($success1&&$success2)
@@ -155,7 +159,11 @@
 		}
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");
+		if($subject){
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");}
+		//inserting data for the user who composed the mail
+		else
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','No Subject','$content','');");
 		//inserting data for the user who composed the mail
 		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'snt');");
 		//inserting data for every user that is specified by user in 'to' field
