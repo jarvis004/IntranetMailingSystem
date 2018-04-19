@@ -17,32 +17,32 @@
 <link href="style2.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-	<div id="header"><span class="title">IES</span><span class="account_links"><a href=logout.php>logout</a></span>
+<body background="images/whats.png" >
+	<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 		<?php 
 		if (isset($_COOKIE['ies'])){
 		$user=$_COOKIE['usr'];
 		$msgid=$_GET['id'];
 		$us="Welcome";
-		echo "<span class=\"account_link\">".$us."  ".$user."</span>";
+		echo "<span class=\"account_link\" style = \" color:white; \">  ".$user."</span>";
 		}
 	?>
 </div>
 <div id="main">
-<div id="left_col">
+<div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">
 <ul>
-<li><a href="compose.php">Compose Mail</a></li>
-<li><a href="inbox.php">Inbox</a></li>
-<li><a href="drafts.php">Drafts</a></li>
-<li><a href="sent.php">Sent Mails</a></li>
-<li><a href="trash.php">Mails in Trash</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href= "compose.php" style = "color: black;">   &emsp; Compose Mail</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="inbox.php" style = "color: black;">  &emsp;  Inbox</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="drafts.php" style = "color: black;">  &emsp;  Drafts</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="sent.php" style = "color: black;"> &emsp; Sent Mails</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="trash.php" style = "color: black;"> &emsp;    Mails in Trash</a></li>
 </ul>
 
 </div>
 
-<div id="right_col">
-<img src="images/vr.png" style="width:1px; float:left;" height="550px"/>
-</div>
+<div id="right_col" >
+<img src="images/vr.png" style="width:1px; float:left;" height="600px"/>
+
 <div id="container" font-family = "Arial" style="
 		height:50%;
 		width:50%;
@@ -52,7 +52,8 @@
         top: 50%;
         left: 60%;
         margin-right: -40%;
-        transform: translate(-50%, -50%)">
+        transform: translate(-50%, -50%);
+        ">
 	<span class = "subject" style = "font-weight: bold;text-align: left;margin:10px 0% 0% -40%;"></span>
 	<span class = "msg" style = "font-weight:italic; text-align: left;"></span>
 	
@@ -84,6 +85,9 @@
 	else
 		echo "sorry, Your session has expired. Please log in again to see the content of this page.";
 ?>
+</div>
+</div>
+<div id="footer"><span class="fn1">&copy; Intranet Email System 2018</span><span class="fn2">powered by:IIIT Allahabad</span>
 </div>
 </body>
 </html>
