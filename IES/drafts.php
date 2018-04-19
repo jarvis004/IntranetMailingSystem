@@ -17,17 +17,17 @@
 <link href="style2.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-<div id="header"><span class="title">IES</span><span class="account_links"><a href=logout.php>logout</a></span>
+<body background="images/whats.png">
+<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 </div>
 <div id="main">
-<div id="left_col">
+<div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">
 <ul>
-<li><a href="compose.php">Compose Mail</a></li>
-<li><a href="inbox.php">Inbox</a></li>
-<li><a href="drafts.php">Drafts</a></li>
-<li><a href="sent.php">Sent Mails</a></li>
-<li><a href="trash.php">Mails in Trash</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href= "compose.php"  style="color:black; ">   &emsp; Compose Mail</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="inbox.php" style="color:black; ">  &emsp;  Inbox</a></li>
+<li style = "background-color:#9fd7fb; width: 230px; height:30px; padding-top: 5px; font-size: 18px;"><a href="drafts.php" style="color:#326ada; ">  &emsp;  Drafts</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="sent.php"  style="color:black; "> &emsp; Sent Mails</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="trash.php" style = "color: black;"> &emsp;    Mails in Trash</a></li>
 </ul>
 
 </div>
@@ -65,8 +65,8 @@
 				$rwst2=mysql_fetch_array($result2);
 				echo "<table border=\"0\" id=\"mail_list\">";
 				echo "<tr>";
-				echo "<td class=\"index\">".($leave + ++$i)."</td>";
-				echo "<td class=\"subjects\" id=".$id."><input type=\"checkbox\" name=\"del_msgs[]\" value=".$id."><a class=\"msglink\" href=\"showmail.php?id=".$id."\">".$rwst2['subject']."</a></td>";
+				echo "<td class=\"index\" style = \" background-color:#E0E0E0 ; color:black;  width: 20px; height:5%; \">".($leave + ++$i)."</td>";
+				echo "<td class=\"subjects\" style = \" background-color:white; color:black; height:5%; \" id=".$id."><input type=\"checkbox\" name=\"del_msgs[]\" value=".$id."><a style =\" color:black; font-size: 15px; \" class=\"msglink\" href=\"showmail.php?id=".$id."\">".$rwst2['subject']."</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
