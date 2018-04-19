@@ -40,28 +40,42 @@
 		font-family:verdana;
 		font-size:12px;
 	}
+	.form {
+		    border: none;
+    		border-bottom: 2px solid red;
+
+	}
 </style>
 <link href="style2.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-<div id="header"><span class="title">IES</span><span class="account_links"><a href=logout.php>logout</a></span>
+<body background="images/whats.png">
+<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 </div>
 <div id="main">
-<div id="left_col">
+<div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">
 <ul>
-<li><a href="compose.php">Compose Mail</a></li>
-<li><a href="inbox.php">Inbox</a></li>
-<li><a href="drafts.php">Drafts</a></li>
-<li><a href="sent.php">Sent Mails</a></li>
-<li><a href="trash.php">Mails in Trash</a></li>
+<li style = "background-color:#9fd7fb; width: 230px; height:30px; padding-top: 5px; font-size: 18px;"><a href= "compose.php" style="color:#326ada; ">   &emsp; Compose Mail</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="inbox.php" style="color:black; ">  &emsp;  Inbox</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="drafts.php" style = "color: black;">  &emsp;  Drafts</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="sent.php"  style="color:black; "> &emsp; Sent Mails</a></li>
+<li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="trash.php" style = "color: black;"> &emsp;    Mails in Trash</a></li>
 </ul>
 
 </div>
 
 <div id="right_col">
 <img src="images/vr.png" style="width:1px; float:left;" height="550px"/>
-<div id="content">
+<div id="container" font-family = "Arial" style="
+		height:50%;
+		width:50%;
+        color: black;
+        padding: 2em;
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        margin-right: -40%;
+        transform: translate(-50%, -50%)">
 <?php
 	$to="";
 	$subject="";
@@ -81,13 +95,13 @@
 		$content=$row['msg'];
 	}
 	echo "<form name=\"compose_mail\" method=\"post\" action=".$_SERVER['PHP_SELF'].">";
-		echo "to:<input type=\"text\" name=\"send_to\" size=\"40\" value=\"$to\"/><br />";
-		echo "subject:<input type=\"text\" name=\"subject\" size=\"40\" value=\"$subject\" /><br />";
-		echo "mail content:<textarea name=\"content\" rows=\"20\" cols=\"50\">";
+		echo "To:<input style = \" border:none; border: 1px solid black; margin-bottom: 5px; margin-left: 30px; padding-top: 5px; padding-bottom: 5px; \" type=\"text\" name=\"send_to\" size=\"80\" value=\"$to\"/><br/>";
+		echo "Subject:<input style = \" border:none; border: 1px solid black; margin-bottom: 5px; padding-top: 5px; padding-bottom : 5px; \" type=\"text\" name=\"subject\" size=\"80\" value=\"$subject\" /><br />";
+		echo "Mail Content:<br><textarea style = \" border:none; border: 1px solid black; margin-bottom: 5px; margin-left:55px; padding-top: 5px;  \" name=\"content\" rows=\"20\" cols=\"73\">";
 			echo $content;
 		echo "</textarea><br/>";
-		echo "<input type=\"submit\" name=\"save\" value=\"save\" />";
-		echo "<input type=\"submit\" name=\"send\" value=\"send mail\"/>";
+		echo "<input style = \" margin-left:60px; margin-right:5px; background-color: #33b5e5; color:white;\" type=\"submit\" name=\"save\" value=\"save\" />";
+		echo "<input style = \" background-color: #33b5e5; color:white; \" type=\"submit\" name=\"send\" value=\"send mail\"/>";
 	echo "</form>";
 
 
