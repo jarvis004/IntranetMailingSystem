@@ -36,7 +36,7 @@ margin:auto;
 		var pass=true;
 	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
 		// checks for any email something@something.com
-		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+		var un =/^([a-zA-Z0-9_\-\.]+)$/;
 	/*	checks for something@imail.com
 		var un =/^([a-zA-Z0-9_\-\.]+)@imail.com$/; */
 		var usr=document.forms[0].uid.value;

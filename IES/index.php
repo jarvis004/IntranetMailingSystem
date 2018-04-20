@@ -33,16 +33,16 @@ margin:auto;
 	function validate(){
 		var pass=true;
 	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
-		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+		var un =/^([a-zA-Z0-9_\-\.]+)$/;
 		var usr=document.forms[0].uid.value;
 		var pwd=document.forms[0].pwd.value;
 		if(usr=="" || !un.test(usr)){
-			alert("Please enter a valid username");
+			alert("Enter a valid username");
 			pass=false;
 			document.forms[0].uid.focus;
 		}
 		else if(pwd==""){
-			alert("password field can not be left blank");
+			alert("Password field can not be left blank");
 			pass=false;
 			document.forms[0].pwd.focus;
 		}

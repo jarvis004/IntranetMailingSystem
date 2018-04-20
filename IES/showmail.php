@@ -70,7 +70,7 @@
 		$db="ies";
 		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
-		$result=mysql_query("select subject, msg from mails where msg_id='$msgid'");
+		$result=mysql_query("select subject, msg,Attachment from mails where msg_id='$msgid'");
 		$row=mysql_fetch_array($result);
 		//echo "<table border=1>";
 		echo "<tr>";
@@ -79,6 +79,10 @@
 		echo "<img src='images/vr1.png' alt='photo of me' style = ' width:95%; height:2px;' /><br><br>";
 		echo "<span class = \"msg\">".$row['msg']."</span><br>";
 		//echo "<td>".$row['msg']."</td>";
+		
+		echo "<img src = 'uploads/".$row['Attachment']."'></img>";
+		echo "<a href = 'uploads/".$row['Attachment']."'>download </a>";
+
 		echo "</tr></table>";
 		mysql_close($link);
 	}

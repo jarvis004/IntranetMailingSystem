@@ -62,6 +62,7 @@
 <li style = "color:black; width: 230px; height:30px;  padding-top: 5px; font-size: 15px;"><a href="trash.php" style = "color: black;"> &emsp;    Mails in Trash</a></li>
 </ul>
 
+
 </div>
 
 <div id="right_col">
@@ -75,7 +76,7 @@
         top: 50%;
         left: 60%;
         margin-right: -40%;
-        transform: translate(-50%, -50%)">
+        transform: translate(-50%, -50%)">   
 <?php
 	$to="";
 	$subject="";
@@ -88,18 +89,20 @@
 		$db="ies";
 		if(!mysql_select_db($db,$link))
 			echo("could not select the database");
-		$resultset=mysql_query("select for_users, subject, msg from mails where msg_id='$id';");
+		$resultset=mysql_query("select for_users, subject, msg,Attachment from mails where msg_id='$id';");
 		$row=mysql_fetch_array($resultset);
 		$to=$row['for_users'];
 		$subject=$row['subject'];
 		$content=$row['msg'];
 	}
-	echo "<form name=\"compose_mail\" method=\"post\" action=".$_SERVER['PHP_SELF'].">";
+	
+	echo "<form name=\"compose_mail\" method=\"post\" action=".$_SERVER['PHP_SELF']." enctype=\"multipart/form-data\" >";
 		echo "To:<input style = \" border:none; border: 1px solid black; margin-bottom: 5px; margin-left: 30px; padding-top: 5px; padding-bottom: 5px; \" type=\"text\" name=\"send_to\" size=\"80\" value=\"$to\"/><br/>";
 		echo "Subject:<input style = \" border:none; border: 1px solid black; margin-bottom: 5px; padding-top: 5px; padding-bottom : 5px; \" type=\"text\" name=\"subject\" size=\"80\" value=\"$subject\" /><br />";
 		echo "Mail Content:<br><textarea style = \" border:none; border: 1px solid black; margin-bottom: 5px; margin-left:55px; padding-top: 5px;  \" name=\"content\" rows=\"20\" cols=\"73\">";
 			echo $content;
 		echo "</textarea><br/>";
+		echo "&nbsp &nbspAttach Files<input type=\"file\" name=\"attachment\">";
 		echo "<input style = \" margin-left:60px; margin-right:5px; background-color: #33b5e5; color:white;\" type=\"submit\" name=\"save\" value=\"save\" />";
 		echo "<input style = \" background-color: #33b5e5; color:white; \" type=\"submit\" name=\"send\" value=\"send mail\"/>";
 	echo "</form>";
@@ -118,19 +121,29 @@
 		$to=$_POST['send_to'];
 		$subject=$_POST['subject'];
 		$content=$_POST['content'];
+
+		$file_get = $_FILES['attachment']['name'];
+		$temp = $_FILES['attachment']['tmp_name'];
+
 		$delimit=",";
 		$indi=strtok($to, $delimit);
 		while(is_string($indi)){
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
+
+		$file_to_saved = "uploads/".$file_get; 
+		move_uploaded_file($temp, $file_to_saved);
+		echo $file_to_saved;
 		
-		//inserting the mail properties i.e. subject, id and content into the mails table
+		//Inserting the mail properties i.e. subject, id and content into the mails table
 		if($subject){
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");}
-		//inserting data for the user who composed the mail
-		else
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','No Subject','$content','');");
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','$subject','$content','$to','$file_get');");
+		}
+		else{
+			$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','No Subject','$content','$to','$file_get');");
+
+		}
 		//inserting data for the user who composed the mail
 		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'svd');");
 		if($success1&&$success2)
@@ -150,6 +163,10 @@
 		$to=$_POST['send_to'];
 		$subject=$_POST['subject'];
 		$content=$_POST['content'];
+
+		$file_get = $_FILES['attachment']['name'];
+		$temp = $_FILES['attachment']['tmp_name'];
+
 		//seperating each user in the user string
 		$delimit=",";
 		$indi=strtok($to, $delimit);
@@ -157,13 +174,13 @@
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
+
+		$file_to_saved = "uploads/".$file_get; 
+		move_uploaded_file($temp, $file_to_saved);
+		echo $file_to_saved;
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
-		if($subject){
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','$subject','$content','');");}
-		//inserting data for the user who composed the mail
-		else
-		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users) values('$msgid','No Subject','$content','');");
+		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','$subject','$content','$to','$file_get');");
 		//inserting data for the user who composed the mail
 		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'snt');");
 		//inserting data for every user that is specified by user in 'to' field
