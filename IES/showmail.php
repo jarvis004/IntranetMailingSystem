@@ -79,9 +79,9 @@
 		echo "<img src='images/vr1.png' alt='photo of me' style = ' width:95%; height:2px;' /><br><br>";
 		echo "<span class = \"msg\">".$row['msg']."</span><br>";
 		//echo "<td>".$row['msg']."</td>";
-		
+		if($row['Attachment']){
 		echo "<img src = 'uploads/".$row['Attachment']."'></img>";
-		echo "<a href = 'uploads/".$row['Attachment']."'>download </a>";
+		echo "<a href = 'uploads/".$row['Attachment']."'>download </a>";}
 
 		echo "</tr></table>";
 		mysql_close($link);
