@@ -8,6 +8,7 @@ create table mails(
 	subject tinytext not null,
 	msg mediumtext,
 	for_users varchar(200),
+	Attachment varchar(35),
 	primary key(msg_id)
 );
 create table users(
