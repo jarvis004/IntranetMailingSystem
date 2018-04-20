@@ -180,8 +180,13 @@
 		echo $file_to_saved;
 		
 		//inserting the mail properties i.e. subject, id and content into the mails table
+		if($subject){
 		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','$subject','$content','$to','$file_get');");
-		//inserting data for the user who composed the mail
+		}
+		else{
+			$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','No Subject','$content','$to','$file_get');");
+
+		}//inserting data for the user who composed the mail
 		$success2=mysql_query("insert into mailstats(username, msg_id, type) values('$from_user', '$msgid', 'snt');");
 		//inserting data for every user that is specified by user in 'to' field
 		foreach($users as $user){
