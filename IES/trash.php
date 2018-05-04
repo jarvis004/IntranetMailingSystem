@@ -18,7 +18,7 @@
 </head>
 
 <body background="images/whats.png">
-<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
+<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">IntraMail</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 </div>
 <div id="main">
 <div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">
