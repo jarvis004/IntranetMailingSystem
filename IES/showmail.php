@@ -81,7 +81,7 @@
 		//echo "<td>".$row['msg']."</td>";
 		if($row['Attachment']){
 		//echo "<img src = '../uploads/".$row['Attachment']."'></img>";
-		echo "<a target = '_blank' href = '../uploads/".$row['Attachment']."'> '"$row['Attachement']"' </a>";}
+		echo "<a target = '_blank' href = '../uploads/".$row['Attachment']."'> download </a>";}
 
 		// Checking if the string contains parent directory
 		
