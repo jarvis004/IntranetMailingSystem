@@ -11,8 +11,8 @@ margin:auto;
 }
 .header img {
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background: #555;
 }
 
@@ -36,7 +36,8 @@ margin:auto;
 		var pass=true;
 	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
 		// checks for any email something@something.com
-		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+	//	var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+		var un =/^([a-zA-Z0-9_\-\.]+)$/;
 	/*	checks for something@imail.com
 		var un =/^([a-zA-Z0-9_\-\.]+)@imail.com$/; */
 		var usr=document.forms[0].uid.value;
@@ -73,7 +74,7 @@ margin:auto;
 
 <body background = "images/effil.jpg">
 <div id="container" font-family = "Arial" style="background: #FFFFF2;
-		height:52%;
+		height:55%;
 		width:21%;
         color: black;
         padding: 2em;
@@ -83,14 +84,14 @@ margin:auto;
         margin-right: -50%;
         transform: translate(-50%, -50%)">
         <div class="header">
-  		<img src="images/microsoft.png" alt="logo" />
-  		<h3> <font color="#808080">Microsoft</font></h3>
+  		<img src="images/logo1.gif" alt="logo" />
+  		<h3> <font color="#808080">IntraMail</font></h3>
 		</div>  
    	
 		<div id="form_holder">
 		<form autocomplete="off" name="reg_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-			<label style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:11px;" class="tx mar" type="text" name="uid" size=20 maxlength=40/><span class="avail"></span>
-			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="password" name="pwd" size=20 maxlength=40/>
+			<label style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:11px;" class="tx mar" placeholder = "Enter Username" type="text" name="uid" size=20 maxlength=40/><span class="avail"></span>
+			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="password" placeholder = "Enter Password" name="pwd" size=20 maxlength=40/>
 			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Security Question:</label><br />
            	
 			<select name = "scq" class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:13px;">
@@ -99,7 +100,7 @@ margin:auto;
   			<option value="3">Favourite player ?</option>
 			</select><br>
 			
-            <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Answer:</label><br /><input class="tx mar"  style =" font-style:normal;font-family:Verdana;font-size:11px;" type="password" name="sca" size=20 maxlength=40/>
+            <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Answer:</label><br /><input class="tx mar"  style =" font-style:normal;font-family:Verdana;font-size:11px;" placeholder = "Enter Answer" type="password" name="sca" size=20 maxlength=40/>
 			<input type="button" name="register" value="sign up" onclick="validate()" class="sub-button"/>
 			<span style="margin:20px 0 0 15%;">already a user? <a href="index.php">Sign In</a></span>
 		</form>

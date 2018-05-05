@@ -50,7 +50,7 @@
 </head>
 
 <body background="images/whats.png">
-<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
+<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">IntraMail</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 </div>
 <div id="main">
 <div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">
@@ -125,17 +125,18 @@
 		$file_get = $_FILES['attachment']['name'];
 		$temp = $_FILES['attachment']['tmp_name'];
 
+		//seperating each user in the user string
 		$delimit=",";
 		$indi=strtok($to, $delimit);
 		while(is_string($indi)){
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
-		if($subject){
-		$file_to_saved = "uploads/".$file_get; 
+		if($file_get){
+		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
-		echo $file_to_saved;
-		}		
+		//echo $file_to_saved;
+		}
 
 
 		//Inserting the mail properties i.e. subject, id and content into the mails table
@@ -176,11 +177,13 @@
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
-		if($subject){
-		$file_to_saved = "uploads/".$file_get; 
+		if($file_get){
+		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
-		echo $file_to_saved;
+		//echo $file_to_saved;
 		}
+
+
 		//inserting the mail properties i.e. subject, id and content into the mails table
 		if($subject){
 		$success1=mysql_query("insert into mails(msg_id, subject, msg, for_users,Attachment) values('$msgid','$subject','$content','$to','$file_get');");

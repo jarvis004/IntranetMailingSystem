@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Refresh" content="5">
 <title>Your Mailbox</title>
 <script src="scripts/jquery.js"></script>
 <script src="scripts/js01.js"></script>
@@ -24,7 +25,7 @@
 <link href="style2.css" rel="stylesheet" type="text/css" />
 </head>
 <body background="images/whats.png">
-<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">EMAIL SYSTEM</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
+<div id="header"  style = "background-color: #4169e1; height:50px;"><span class="title" style = "color:white;font-size:20px; padding-bottom: 10px; padding-top: 5px; font-family:arial;">IntraMail</span><span class="account_links"><a href="logout.php" style = " color: white;">logout</a></span>
 </div>
 <div id="main">
 <div id="left_col" style ="font-family: sans-serif;height:610px;width:250px; background-color: #f5f5f5">

@@ -11,8 +11,8 @@ margin:auto;
 }
 .header img {
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background: #555;
 }
 
@@ -33,7 +33,8 @@ margin:auto;
 	function validate(){
 		var pass=true;
 	//	var un=/^(([A-Z]*[a-z]+)+[0-9]*)+$/;
-		var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+	//	var un =/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+		var un =/^([a-zA-Z0-9_\-\.]+)$/;
 		var usr=document.forms[0].uid.value;
 		var pwd=document.forms[0].pwd.value;
 		if(usr=="" || !un.test(usr)){
@@ -54,7 +55,7 @@ margin:auto;
 </head>
 <body background = "images/effil.jpg">
 <div id="container" font-family = "Arial" style="background: #FFFFF2;
-		height:45%;
+		height:55%;
 		width:21%;
         color: black;
         padding: 2em;
@@ -64,18 +65,18 @@ margin:auto;
         margin-right: -50%;
         transform: translate(-50%, -50%)"> 
         <div class="header">
-  		<img src="images/microsoft.png" alt="logo" />
-  		<h3> <font color="#808080">Microsoft</font></h3>
+  		<img src="images/logo1.gif" alt="logo" />
+  		<h3> <font color="#808080">IntraMail</font></h3>
 		</div>    
     <div id="form_holder">
     <form name="login_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validate()">
-    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "@gmail.com" name="uid" size=25  maxlength=40/><br /><span class="avail"></span>
+    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "Enter Username" name="uid" size=25  maxlength=40/><br /><span class="avail"></span>
     <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input  style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" placeholder= "Enter Password " type="password" name="pwd" size=25 text-align = "center"  maxlength=40/>
 	<input style =" font-style:bold;" type="submit" name="submit" value="Sign In" class="sub-button"/>
 	<br/>
 	</form>
 	<span style="margin:40px 0 1.2% 20%;"><a href='forgotpassword.php'>Forgot password</a></span><br/>
-	<span style="margin:15px 0 0 8%;">New to IES? <a href="register.php">Create an account now</a></span>
+	<span style="margin:15px 0 0 8%;">New to IntraMail? <a href="register.php">Create an account now</a></span>
 	</div>
   </div>
   </div>
