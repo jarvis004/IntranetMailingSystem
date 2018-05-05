@@ -90,8 +90,8 @@ margin:auto;
    	
 		<div id="form_holder">
 		<form autocomplete="off" name="reg_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-			<label style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:11px;" class="tx mar" type="text" name="uid" size=20 maxlength=40/><span class="avail"></span>
-			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="password" name="pwd" size=20 maxlength=40/>
+			<label style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:11px;" class="tx mar" placeholder = "Enter Username" type="text" name="uid" size=20 maxlength=40/><span class="avail"></span>
+			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="password" placeholder = "Enter Password" name="pwd" size=20 maxlength=40/>
 			<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Security Question:</label><br />
            	
 			<select name = "scq" class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:13px;">
@@ -100,7 +100,7 @@ margin:auto;
   			<option value="3">Favourite player ?</option>
 			</select><br>
 			
-            <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Answer:</label><br /><input class="tx mar"  style =" font-style:normal;font-family:Verdana;font-size:11px;" type="password" name="sca" size=20 maxlength=40/>
+            <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Answer:</label><br /><input class="tx mar"  style =" font-style:normal;font-family:Verdana;font-size:11px;" placeholder = "Enter Answer" type="password" name="sca" size=20 maxlength=40/>
 			<input type="button" name="register" value="sign up" onclick="validate()" class="sub-button"/>
 			<span style="margin:20px 0 0 15%;">already a user? <a href="index.php">Sign In</a></span>
 		</form>

@@ -122,9 +122,12 @@
 		$subject=$_POST['subject'];
 		$content=$_POST['content'];
 
-		$file_get = $_FILES['attachment']['name'];
+		$uploadedName=$_FILES['attachment']['name'];
 		$temp = $_FILES['attachment']['tmp_name'];
-
+		$ext = strtolower(substr($uploadedName, strripos($uploadedName, '.')+1));
+		$size = filesize($temp);
+		$file_get = md5($size) . '.' . $ext;
+		
 		$delimit=",";
 		$indi=strtok($to, $delimit);
 		while(is_string($indi)){
@@ -132,9 +135,9 @@
 			$indi=strtok($delimit);
 		}
 		if($file_get){
-		$file_to_saved = "uploads/".$file_get; 
+		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
-		echo $file_to_saved;
+		//echo $file_to_saved;
 		}		
 
 
@@ -166,9 +169,12 @@
 		$subject=$_POST['subject'];
 		$content=$_POST['content'];
 
-		$file_get = $_FILES['attachment']['name'];
+		$uploadedName=$_FILES['attachment']['name'];
 		$temp = $_FILES['attachment']['tmp_name'];
-
+		$ext = strtolower(substr($uploadedName, strripos($uploadedName, '.')+1));
+		$size = filesize($temp);
+		$file_get = md5($size) . '.' . $ext;
+		
 		//seperating each user in the user string
 		$delimit=",";
 		$indi=strtok($to, $delimit);
@@ -177,9 +183,9 @@
 			$indi=strtok($delimit);
 		}
 		if($file_get){
-		$file_to_saved = "uploads/".$file_get; 
+		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
-		echo $file_to_saved;
+		//echo $file_to_saved;
 		}
 		//inserting the mail properties i.e. subject, id and content into the mails table
 		if($subject){

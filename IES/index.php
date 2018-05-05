@@ -70,7 +70,7 @@ margin:auto;
 		</div>    
     <div id="form_holder">
     <form name="login_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validate()">
-    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "@gmail.com" name="uid" size=25  maxlength=40/><br /><span class="avail"></span>
+    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "Enter Username" name="uid" size=25  maxlength=40/><br /><span class="avail"></span>
     <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input  style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" placeholder= "Enter Password " type="password" name="pwd" size=25 text-align = "center"  maxlength=40/>
 	<input style =" font-style:bold;" type="submit" name="submit" value="Sign In" class="sub-button"/>
 	<br/>

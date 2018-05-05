@@ -1,0 +1,10 @@
+Compiler basics, Need of a compiler, Interpreter, Programming languages and compilers,
+Phases of a compiler, Lexical Analyzer and tokenization, Finite automata for identification of tokens,
+Lex errors and lex error handling, Lookahead symbol, Input buffer, Symbol table management.
+Semantic analysis, 
+types of error handled by compiler, 
+Parsing and parse tree generation, 
+Leftmost and rightmost derivation, 
+Ambiguity in grammar, 
+Left recursion and elimination of left recursion, 
+

@@ -77,7 +77,7 @@ margin:auto;
 		</div>    
     <div id="form_holder">
     <form name="login_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validate()">
-    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "@gmail.com" name="uid" size=20  maxlength=40/><span class="avail"></span>
+    <label  style =" font-style:normal;font-family:Verdana;font-size:14px;">Username:</label><br /><input style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" type="text" placeholder = "Enter Username" name="uid" size=20  maxlength=40/><span class="avail"></span>
     <!--<label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Password:</label><br /><input  style =" font-style:normal;font-family:Verdana;font-size:12px;" class="tx mar" placeholder= "Enter Password " type="password" name="pwd" size=25 text-align = "center"  maxlength=40/>
 	<input style =" font-style:bold;" type="submit" name="submit" value="Sign In" class="sub-button"/>
 	<br/>
@@ -100,9 +100,9 @@ margin:auto;
 	</select>
 	<br>
     <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">Answer:</label>
-    <input class="tx mar" style =" font-style:normal;font-family:Verdana;font-size:12px;" type="password" name="sca" size="20" maxlength=40/>
+    <input class="tx mar" style =" font-style:normal;font-family:Verdana;font-size:12px;" type="password" name="sca" placeholder = "Enter Answer" size="20" maxlength=40/>
     <label class = "mar"  style =" font-style:normal;font-family:Verdana;font-size:14px;">New password:</label>
-    <input class="tx mar" style =" font-style:normal;font-family:Verdana;font-size:12px;" type="password" name="newpwd" size="20" maxlength=40/>
+    <input class="tx mar" style =" font-style:normal;font-family:Verdana;font-size:12px;" type="password" name="newpwd" placeholder = "Enter Password" size="20" maxlength=40/>
 
 	<input type="submit" name="submit" value="Update password" class="sub-button"/>
 	<br/>

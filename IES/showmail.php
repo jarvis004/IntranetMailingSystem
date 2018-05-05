@@ -80,8 +80,11 @@
 		echo "<span class = \"msg\">".$row['msg']."</span><br>";
 		//echo "<td>".$row['msg']."</td>";
 		if($row['Attachment']){
-		echo "<img src = 'uploads/".$row['Attachment']."'></img>";
-		echo "<a href = 'uploads/".$row['Attachment']."'>download </a>";}
+		echo "<img src = '../uploads/".$row['Attachment']."'></img>";
+		echo "<a href = '../uploads/".$row['Attachment']."'>download </a>";}
+
+		// Checking if the string contains parent directory
+		
 
 		echo "</tr></table>";
 		mysql_close($link);
