@@ -134,7 +134,7 @@
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
-		if($file_get){
+		if($uploadedName){
 		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
 		//echo $file_to_saved;
@@ -182,7 +182,7 @@
 			$users[]=$indi;
 			$indi=strtok($delimit);
 		}
-		if($file_get){
+		if($uploadedName){
 		$file_to_saved = "../uploads/".$file_get; 
 		move_uploaded_file($temp, $file_to_saved);
 		//echo $file_to_saved;
