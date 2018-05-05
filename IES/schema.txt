@@ -15,8 +15,6 @@ create table users(
 	serial bigint auto_increment unique not null,
 	username varchar(25) unique,
 	password varchar(200) not null,
-	security_question text not null,
-	sq_answer varchar(30),
 	primary key(username)
 );
 create table mailstats(
